@@ -1,4 +1,4 @@
 Everchat
 ========
 
-Video chat with up to 20 people simultaneously. The system uses new P2P features available in Flash 10.1 to distribute media stream data. Chat rooms are either created on the fly or city-based. Uses Facebook Connect for login. Also features an audio and video trivia game.
+Everchat allows video and text chat with up to 20 people simultaneously. The application demonstrates Flash 10.1's P2P features by distributing text, data, and audio without relying on a central server for data transfer.
