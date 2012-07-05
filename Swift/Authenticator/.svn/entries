@@ -1,0 +1,67 @@
+8
+
+dir
+1
+svn://root@thechatwall.com/thechatwall/Swift/Authenticator
+svn://root@thechatwall.com/thechatwall
+
+
+
+2010-10-16T03:53:05.118827Z
+1
+root
+
+
+svn:special svn:externals svn:needs-lock
+
+$PopB4Smtp$.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+f1e56db17517beeee9432bca9d1091f2
+2010-10-16T03:53:05.118827Z
+1
+root
+
+PopB4Smtp
+dir
+
+PLAIN.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+b596fb21d61db7db51692e5ca048dab3
+2010-10-16T03:53:05.118827Z
+1
+root
+
+CRAMMD5.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+fe5ff3f695359b2bda22ebd792f370d1
+2010-10-16T03:53:05.118827Z
+1
+root
+
+LOGIN.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+e75dff9d05a8633bf55cab545105002b
+2010-10-16T03:53:05.118827Z
+1
+root
+

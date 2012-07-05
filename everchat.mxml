@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" applicationComplete="init()">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import mx.controls.Label;
+			
+			import org.osmf.utils.URL;
+			
+			import spark.components.RichText;
+			public const CONFIG:Object = {
+//				SITE_URL:'http://192.168.1.100',
+//				DOMAIN:'192.168.1.100',
+				SITE_URL:'http://ever-chat.com',
+				DOMAIN:'ever-chat.com',
+				HASH_KEY:'thekeyboardismightierthanthesword',
+				WALL_PASS_NO_CHANGE:'nochange999',
+				OOPS: 'Oops!',			// error message title
+				GOOD_JOB: 'Good Job'	// success message title
+			};
+			
+			// debug
+			public var login_on:Boolean = true;
+			
+			import com.adobe.serialization.json.JSON;
+			import com.facebook.graph.Facebook;
+			
+			import flash.net.navigateToURL;
+			
+			import mx.controls.Alert;
+			import mx.containers.Canvas;
+			import mx.core.Container;
+			import mx.core.UIComponent;
+			
+			import spark.components.Button;
+			import spark.components.Group;
+			import spark.components.SkinnableContainer;
+			import spark.components.TextArea;
+			import spark.components.TextInput;
+						
+			public var user:User = new User();
+			public var logoutButton:Button = new Button();
+			public var initial_wall_id:int = 0;	// wall id to enter after logging in
+			
+			// screens
+			private var wall:Wall;
+			private var login:Login;
+			public var home:Home;
+			public var backgrounds:Array =  new Array;		// array of BackgroundImage objects
+			public var background_index:uint;				// randomly chosen index
+			private var background_container:UIComponent = new UIComponent;
+			private var loaders:Object = new Object;
+			
+			// sounds
+			[Embed(source="files/audio/plink.mp3")]
+			public var plink_sound:Class;
+			[Embed(source="files/audio/error.mp3")]
+			public var error_sound:Class;
+
+			// Ugly fix for Flash 10 SoundAsset.play() delay. See http://www.ghostwire.com/blog/archives/as3-fixing-the-lag-that-arises-when-playing-a-short-sound-effect/
+			private static var silence_data:ByteArray = new ByteArray();
+			private static function fill_silence(event:SampleDataEvent):void {
+				event.data.writeBytes(silence_data);
+			}
+			
+			private function init():void{
+				
+				// Ugly fix for Flash 10 SoundAsset.play() delay. See http://www.ghostwire.com/blog/archives/as3-fixing-the-lag-that-arises-when-playing-a-short-sound-effect/
+				for (var i:int=0; i<4096; i++)
+					silence_data.writeFloat(0);
+				var snd_silence:Sound = new Sound();
+				snd_silence.addEventListener(SampleDataEvent.SAMPLE_DATA, fill_silence);
+				snd_silence.play();
+				
+				this.user = new User({CONFIG:this.CONFIG});
+				
+				backgrounds[0] = new BackgroundImage(0, 'Ansel Adams', 		'', 'Tetons and the Snake River', 'http://www.anseladams.com/Tetons_and_the_Snake_River_p/1701186102.htm', '');
+				backgrounds[1] = new BackgroundImage(1, 'Grant Hofmann', 	'http://www.granthofmannphotography.com', 'Molokai Dolphin', '', '');
+				backgrounds[2] = new BackgroundImage(2, 'Grant Hofmann', 	'http://www.granthofmannphotography.com', 'Sunset Sail', '', '');
+				backgrounds[3] = new BackgroundImage(3, 'Grant Hofmann', 	'http://www.granthofmannphotography.com', 'Molokai Barrier Reef', '', 'The only barrier reef in Hawaii is found offshore of Molokai, where the sun shines bright and the hues are spectacular shades of blue.');
+				backgrounds[4] = new BackgroundImage(4, 'Grant Hofmann', 	'http://www.granthofmannphotography.com', 'Lanikai Rainbow', '', '');
+				backgrounds[5] = new BackgroundImage(5, 'pfly', 'http://www.flickr.com/photos/pfly', 'Mt. Rainier', '', 'Green Lake Trail. Rainforest living up to its name. ');
+				backgrounds[6] = new BackgroundImage(6, 'Grant Hofmann', 	'http://www.granthofmannphotography.com', 'Sleepy Hanalei Cottages', '', '');
+				backgrounds[7] = new BackgroundImage(7, '', 'http://thundafunda.com', '', '', '');
+				backgrounds[8] = new BackgroundImage(8, '', 'http://thundafunda.com', '', '', '');
+				backgrounds[9] = new BackgroundImage(9, '', 'http://thundafunda.com', '', '', '');
+				backgrounds[10] = new BackgroundImage(10, '', 'http://thundafunda.com', '', '', '');
+				backgrounds[11] = new BackgroundImage(11, '', '', '', '', '');
+				backgrounds[12] = new BackgroundImage(12, '', '', '', 'http://51bk.org/wp-content/uploads/2010/11/cute_dog_waiting.jpg', '');
+				backgrounds[13] = new BackgroundImage(13, '', 'http://thundafunda.com', '', '', '');
+				backgrounds[14] = new BackgroundImage(14, '', 'http://thundafunda.com', '', '', '');
+				backgrounds[15] = new BackgroundImage(15, 'kseriphyn', 'http://www.morguefile.com/creative/kseriphyn', '', '', '');
+				backgrounds[16] = new BackgroundImage(16, '', 'http://thundafunda.com', '', '', '');
+				backgrounds[17] = new BackgroundImage(17, '', 'http://thundafunda.com', '', '', '');
+				backgrounds[18] = new BackgroundImage(18, '', 'http://thundafunda.com', '', '', '');
+				backgrounds[19] = new BackgroundImage(19, '', 'http://thundafunda.com', '', '', '');
+				
+				this.background_index = Math.floor(Math.random()*backgrounds.length);
+												
+				this.addEventListener(Event.RESIZE, resize);
+				this.wall = new Wall(this);
+				this.home = new Home(this);
+				this.login = new Login(this);
+				
+				createLogoutButton();
+				getBackground();
+
+				if(LoaderInfo(this.root.loaderInfo).parameters['wall_id'] != undefined) {
+					this.initial_wall_id = Number(LoaderInfo(this.root.loaderInfo).parameters['wall_id']);
+				}
+				
+				showLogin();
+				
+				// if the user logs out of facebook from outside everchat, call a function
+				Facebook.addJSEventListener('auth.sessionChange', sessionChangeHandler);
+			}
+			
+			// gets a random background to use for the entire session 
+			private function getBackground():void {
+				var request:URLRequest = new URLRequest(this.CONFIG.SITE_URL + '/files/backgrounds/' + background_index + '.jpg');
+				loaders['get_background'] = new Loader;
+				loaders['get_background'].contentLoaderInfo.addEventListener(Event.COMPLETE, useBackground);
+				loaders['get_background'].contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, ioEventHandler);
+				loaders['get_background'].contentLoaderInfo.addEventListener(SecurityErrorEvent.SECURITY_ERROR, securityEventHandler);
+				loaders['get_background'].load(request);
+			}
+			
+			// use the downloaded background
+			private function useBackground(e:Event):void {
+				background_container.addChild(loaders['get_background']);
+				background_container.width = loaders['get_background'].contentLoaderInfo.width;
+				background_container.height = loaders['get_background'].contentLoaderInfo.height;
+				background_container.depth = -1;
+				home.addElement(background_container);
+				this.resize(new Event(Event.COMPLETE));
+			}
+			
+			// handle all IOErrorEvents
+			private function ioEventHandler(e:IOErrorEvent):void {
+				
+			}
+			
+			// handle all SecurityErrorEvents
+			private function securityEventHandler(e:SecurityErrorEvent):void {
+				
+			}
+						
+			private function resize(e:Event):void {
+				this.wall.resize();
+				this.home.resize();
+				this.login.resize();
+				
+				// Center the background image.
+				if(home.contains(background_container) && this.width > background_container.width) {
+					background_container.x = (this.width / 2) - (background_container.width / 2);
+				}
+			}
+			
+			// received instruction to enter a wall
+			public function enterWall(opts:Object):void {
+				if(this.initial_wall_id) {
+					opts.id = this.initial_wall_id;
+					this.initial_wall_id = 0;
+				}
+				wall.init(opts);
+				addElement(wall);
+			}
+			
+			public function enterHome():void {
+				home.refresh();
+				addElement(home);
+			}
+			
+			public function showLogin():void {
+				addElement(login);
+			}
+
+			public function createLogoutButton():void {
+				logoutButton.id = 'logoutSubmit';
+				logoutButton.label = 'Logout';
+				logoutButton.addEventListener(MouseEvent.CLICK, logout);
+			}
+			
+			// jump to logout page
+			public function logout(e:MouseEvent):void {
+				Facebook.logout(logoutCallback);
+			}
+			
+			public function logoutCallback(success:Boolean):void {
+				if(success) {
+					removeElement(home);
+					showLogin();
+					this.login.loginButton.enabled = true;
+				}
+			}
+			
+			// this is called if the user logs out of facebook from outside everchat
+			public function sessionChangeHandler(result:Object):void {
+				if(result.status == 'notConnected' || result.status == 'unknown') Facebook.logout(logoutCallback);
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Style>
+		@namespace components "creacog.spark.components.*";
+		
+		components|ResizeableTitleWindow
+		{
+			skin-class : ClassReference( "creacog.spark.skins.ResizeableTitleWindowSkin" );
+		}
+		
+	</fx:Style>
+</s:Application>

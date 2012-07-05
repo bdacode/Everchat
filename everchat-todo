@@ -1,0 +1,166 @@
+Consider on occasion whether the adjective "relentless" applies to your team. If not, you probably need to step it up. -- Max Levchin
+
+*** first functional version finished October 17th, 2010
+*** second functional version finished December 24th, 2010
+
+*** soft launch ???, 2011
+- room directory, a plan for cities / categories
+    goal: create a specialized city room association and browse list. any room can be associated with
+            a city, and when a user browses to that city it will show up (if public). If there is only
+            one, attempt to auto join that room which will be the original city room. This will be the
+            extent of special browsing features. The rest of discovery process is a random popular 
+            room list and search. 
+            
+            search box
+            popular list | these boxes hidden for search results
+            cities list  | 
+
+    mods:
+     1. add fields 'keywords' 'description' and 'city_id' to table 'walls'
+     2. use multiple INSERT query to create rooms for cities
+     3. add 'include_in_search' to walls
+    to-do:
+     1. create rooms for cities based on city population (300)
+     2. create the interface and include the cities box
+     3. update the people-in-room count logic
+     4. add the search function
+- add 100 trivia questions
+- bug: banner load fail prevents room admin screen from opening
+- bug?: doesn't grab facebook data if already logged in
+
+*** public launch 
+- thorough exception handling
+
+*** the future
+- private chat online/offline indicator
+- sounds: other players answer correct trivia (or win game), create room, 
+- world triad explanation
+- bug: seeders leave suddenly...who will seed? 
+- if there is a delay, start game of pong
+- domain options: everchat.com ($2,000) everchat.us ($15) ever-chat.com (acquired)
+- facebook integration points: 
+    do more with winners of games
+    do research into more integration points
+    invite specific friends via facebook message
+- winner animations / highlights
+- friends / contact list
+- group play a youtube vid
+- user account edit ** top menu system? What goes there other than account edit?
+    * change status
+    * inbox
+    * logout
+    * comments / bug report
+    * favorites
+- google sitemap plan
+- feature?: poking-ish action
+
+failover ideas
+- if the server goes down and all games die (they would), walls.num_members need to be reset to 0
+
+game ideas
+- best dance wins (play music)
+- ASCII art identify image - http://www.asciiarts.net/
+- lol: come up with funniest titles for funny images (lolcats, strange, etc) 
+- trivia: more possibilities like:
+        question delay: show a picture, hide the picture, ask a question about it
+        post-question picture: something is incomplete about the first picture, and the answer is the complete picture
+        post-question sound: example - what does robert plant claim he's going to do in this song <sound>clip</sound>? answer: ramble on <sound>"RAMBLE ON!"</sound>
+- trivia: name strange things like piano sandwich and hand soap from toxel.com
+- trivia: play a clip of someone speaking a language, and ask what language it is
+- trivia: play a song backwards
+- trivia: show a picture very quickly and ask for an ID of the picture
+
+specific trivia questions
+- idiom meanings: five finger discount (shoplifting)
+- Memphis water question.
+- play Secretariat race at Belmont 1973 and ask what the name of the horse is
+- ain't no sunshine when she's gone artist ID (bill withers)
+- grisbi army of me cover - who wrote the original of this song? bjork
+- 1941 photos found and developed 68-years later photo in trivia folder. pearl harbor
+- bedtime for bonzo question
+- stevie wonder - as. name this artist
+- geography questions
+- Name the 90's r&b group that landed their first record contract with an impromptu performance of New Edition's "Can You Stand The Rain"
+  in 1989 and also recorded the song for their own album in 1997. 
+- boyz ii men - questlove is playing drums in motownphilly about 1:30 in
+- naomi watts' father is the laughing voice in pink floyd's Speak To Me and Brain Damage
+- What is the British theatrical slang term used to describe when an actor breaks character during a scene by laughing? corpsing - use Extras outtakes
+- spell this man's last name (show picture of zach galifianakis)
+- air is by volume 78% nitrogen, 21% oxygen, and 1% ______ (Argon)
+- "well i say we get a couple a wranglers to go up there and beat the shit out of him" -- dolly parton, Nine to Five
+- name this band which is not afraid to prominently feature the French horn. (Air)
+- which contestant performed this song [play Mad World] in 2008's American Idol finals? Adam Lambert
+- In December of 2010 the turning over of $7.2B to the victims of a Ponzi scheme set a United States record
+  for a forfeiture. It was offered without a legal judgement. Name the person responsible for the Ponzi scheme. 
+- Name the car company that used this song in a 2002 TV commercial and in turn introduced the work of Nick Drake to a new generation. (volkswagen)
+  Answer fact: Within a month of this commercial's release, Nick Drake had sold more records than he had in the previous 30 years.
+- Rumspringa or Amish related question. 
+- Sarah Mclachlan's "Angel" is about a touring keyboardist who died of a heroin overdose. Which band was the keyboardist touring with? (Smashing Pumpkins)
+     extra: The Smashing Pumpkins were not invited to Jonathan Melvoin's funeral, and drummer Jimmy Chamberlain was kicked out of the band because 
+     he was at the scene and was also addicted to heroin. 
+- Stanford at Cal (Marching band on the field), Flutie Miracle Hail Mary
+- Who holds the single game NBA scoring record? (Wilt Chamberlain)
+- In 1989 the World Series was delayed for 10 days after a deadly Loma Prieta earthquake occured before Game 3. Name the city where this game was to be played.
+   extra: Because of the coincidence of timing, it was the first major earthquake in the United States ever to be broadcast by live television.
+- trick kid snap play. is the play legal? (yes)
+- Name this author of War and Peace [image]. (Leo Tolstoy)
+- Name this character from The Office [famous dance video]. (David Brent)
+- Name this artist [shoulda been a cobwboy audio]. (?)
+- January 2nd, 2011 the Seattle Seahawks defeated the St. Louis Rams 16-6 and became the first team in NFL history to do what? (make the playoffs with a sub 0.500 record)
+- Animals falling from the sky question. (Magnolia. News story about birds.)
+
+references
+- play mp3 from ByteArray http://www.flexiblefactory.co.uk/flexible/?p=46
+- smiley list http://www.astro.umd.edu/~marshall/smileys.html
+- MultiPartURLLoader http://blog.inspirit.ru/?p=139
+- Macbook iSight problems: http://discussions.apple.com/thread.jspa?messageID=12641342&#12641342
+- top-bottom posting order discussion http://apps.ycombinator.com/item?id=2030748
+
+law research
+- selection and arrangement of facts can be considered copyrighted: http://web2.westlaw.com/find/default.wl?tf=-1&rs=WLW10.10&serialnum=1987110002&fn=_top&sv=Split&tc=-1&pbc=4302B6E9&ordoc=1988176599&findtype=Y&db=0000350&vr=2.0&rp=%2ffind%2fdefault.wl&mt=Westlaw
+- 
+
+
+directory design
+- new flash "page"
+- simple search box
+- random sample list on first view (w/ refresh for interested people) 
+
+____________________________________
+|        room name or tag          |
+|__________________________________|
+
+- results can show name, description, number of people, date of creation
+
+content sources
+- sites
+  http://www.morguefile.com/
+
+- audio
+  answerming_machine.mp3: http://www.freesound.org By NoiseCollector (http://www.freesound.org/usersViewSingle.php?id=4948) am beep.wav (http://www.freesound.org/samplesViewSingle.php?id=3977)
+  correct1.mp3: By hello_flowers (http://www.freesound.org/usersViewSingle.php?id=199517) Hmasteraz130bpm_FeelGoodTime L.wav (http://www.freesound.org/samplesViewSingle.php?id=36076)
+  correct2.mp3: By SpeedY (http://www.freesound.org/usersViewSingle.php?id=6479) Eminsus4_3strs.wav (http://www.freesound.org/samplesViewSingle.php?id=8591)
+  http://www.soundsnap.com/internet_musical_and_chordal_rollover_1
+  http://www.soundsnap.com/node/108198
+  http://www.soundsnap.com/node/10699
+
+backgrounds resources:
+- http://green-buzz.net/photos/20-most-amazing-microscope-shots-pictures/
+
+ad networks
+- adbrite
+- cubics
+- rockyou
+
+system commands
+- list binds to a port
+  lsof -i:80
+- set the correct time
+  rdate -s tick.greyware.com
+
+code snippets
+md5 hash
+$new_password_hashed = hash_hmac('MD5', $new_password, HASH_KEY);
+
+server system logs
+- /var/log/secure (denyhosts)

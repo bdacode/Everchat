@@ -1,0 +1,130 @@
+8
+
+dir
+1
+svn://root@thechatwall.com/thechatwall/Swift/Plugin
+svn://root@thechatwall.com/thechatwall
+
+
+
+2010-10-16T03:53:05.118827Z
+1
+root
+
+
+svn:special svn:externals svn:needs-lock
+
+EasySwiftResponseTracker.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+0137afb4711af61964ba50ee3b37b648
+2010-10-16T03:53:05.118827Z
+1
+root
+
+ConnectionRotator.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+751002325ceeb01ff07e4574f72bfee9
+2010-10-16T03:53:05.118827Z
+1
+root
+
+BandwidthMonitor.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+07443ad9c60be2e743618cf68c8f7a49
+2010-10-16T03:53:05.118827Z
+1
+root
+
+Decorator
+dir
+
+MailSend.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+6b495a7574b78e6886497934fc59c530
+2010-10-16T03:53:05.118827Z
+1
+root
+
+VerboseSending.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+021d0289147f388423888dc9ae62f283
+2010-10-16T03:53:05.118827Z
+1
+root
+
+AntiFlood.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+5307e3110f253c17600b6a8b4a803a70
+2010-10-16T03:53:05.118827Z
+1
+root
+
+Decorator.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+2ce562bb39a77f806ef19601f336221c
+2010-10-16T03:53:05.118827Z
+1
+root
+
+FileEmbedder.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+70716f996842b6c62d5eb7413dc20cfc
+2010-10-16T03:53:05.118827Z
+1
+root
+
+Throttler.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+95d37886b18c5673b28d3e0091c92e4c
+2010-10-16T03:53:05.118827Z
+1
+root
+
+VerboseSending
+dir
+

@@ -1,0 +1,280 @@
+8
+
+dir
+1
+svn://root@thechatwall.com/thechatwall/Swift
+svn://root@thechatwall.com/thechatwall
+
+
+
+2010-10-16T03:53:05.118827Z
+1
+root
+
+
+svn:special svn:externals svn:needs-lock
+
+Iterator.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+b5a3f70f224b16cf585491f8ada2309e
+2010-10-16T03:53:05.118827Z
+1
+root
+
+ConnectionBase.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+ef1ab7232b9b782f1f296b6b9b8bc1c7
+2010-10-16T03:53:05.118827Z
+1
+root
+
+Log
+dir
+
+CacheFactory.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+cb87c14621f7955d44a0b89ae5f4ce37
+2010-10-16T03:53:05.118827Z
+1
+root
+
+ClassLoader.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+c33744c93d8ea5c74f2fd90c6fb07758
+2010-10-16T03:53:05.118827Z
+1
+root
+
+Message
+dir
+
+FileException.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+9b38cf3d4b5827407f942c4a38ed5af2
+2010-10-16T03:53:05.118827Z
+1
+root
+
+Exception.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+3426d66b370c15f09731ac5d2e225a35
+2010-10-16T03:53:05.118827Z
+1
+root
+
+Connection.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+984f17e104d43bd73ee06731325a6652
+2010-10-16T03:53:05.118827Z
+1
+root
+
+Iterator
+dir
+
+Cache.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+c5d16cc9220acc0e6a6cc8758032303f
+2010-10-16T03:53:05.118827Z
+1
+root
+
+Events.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+4ec18a7168fe167ba7fef40cacc6c99d
+2010-10-16T03:53:05.118827Z
+1
+root
+
+Plugin
+dir
+
+Connection
+dir
+
+Authenticator.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+5f4d49b82ab8a20bc166a7b21a58e548
+2010-10-16T03:53:05.118827Z
+1
+root
+
+BatchMailer.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+22cd85e332e1775130c1106b05c2bf4d
+2010-10-16T03:53:05.118827Z
+1
+root
+
+Cache
+dir
+
+Events
+dir
+
+ConnectionException.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+5bca63568e593b4598c551b236f92fe0
+2010-10-16T03:53:05.118827Z
+1
+root
+
+RecipientList.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+c1b5327e74b8d1e8a7fe187ca444aed2
+2010-10-16T03:53:05.118827Z
+1
+root
+
+File.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+2864019d30f7e295c55e9990a5b419aa
+2010-10-16T03:53:05.118827Z
+1
+root
+
+Log.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+9c3be6a3428b14115d9df4af63fff639
+2010-10-16T03:53:05.118827Z
+1
+root
+
+BadResponseException.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+f154f992d06933816df0e1f0e0a922fd
+2010-10-16T03:53:05.118827Z
+1
+root
+
+Authenticator
+dir
+
+LogContainer.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+28f1abb3ad775fb67156f7ddc5139087
+2010-10-16T03:53:05.118827Z
+1
+root
+
+Message.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+7a2277fd9dfaead9fb04ab993925e6d9
+2010-10-16T03:53:05.118827Z
+1
+root
+
+Address.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+fbf107e52686d45bcdcdde6dabc38590
+2010-10-16T03:53:05.118827Z
+1
+root
+
+AddressContainer.php
+file
+
+
+
+
+2010-10-14T19:41:00.000000Z
+f0697a4eb3787d64f6c3d309501bdfb0
+2010-10-16T03:53:05.118827Z
+1
+root
+
